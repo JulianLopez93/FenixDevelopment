@@ -1,3 +1,4 @@
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -19,11 +20,14 @@ import {
 } from '@loopback/rest';
 import {Empleado} from '../models';
 import {EmpleadoRepository} from '../repositories';
+import {MensajeriaService} from '../services/mensajeria.service';
 
 export class EmpleadoController {
   constructor(
     @repository(EmpleadoRepository)
     public empleadoRepository : EmpleadoRepository,
+    @service(MensajeriaService)
+    public mensajeriaService : MensajeriaService,
   ) {}
 
   @post('/empleados')
@@ -43,7 +47,8 @@ export class EmpleadoController {
       },
     })
     empleado: Omit<Empleado, 'Id'>,
-  ): Promise<Empleado> {
+  ): Promise<Empleado> {    
+    this.mensajeriaService.EnviarSMS(empleado);
     return this.empleadoRepository.create(empleado);
   }
 
