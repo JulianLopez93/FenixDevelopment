@@ -10,17 +10,21 @@ export class MensajeriaService {
    */
 
   EnviarSMS(empleado: Empleado): void {
+    
     console.log("conexión con Twilio exitosa.");
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    let authToken = process.env.TWILIO_AUTH_TOKEN;
+    if (authToken != undefined){
+      authToken = authToken.replace(/"/g,'');
+    }
 
     const twilio = require('twilio');
     const client = new twilio(accountSid, authToken);
 
     client.messages
       .create({
-        body: `${empleado.Nombres} ${empleado.Apellidos}, has sido creado correctamente`,
-        from: '+18039024115',
+        body: `Se ha registrado a ${empleado.Nombres} ${empleado.Apellidos}  como un nuevo empleado.`,
+        from: '+18507508309',
         to: '+57' + `${empleado.Telefono}`
       })
       .then((message: any) => console.log(message.sid));
