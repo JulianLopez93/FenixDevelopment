@@ -48,8 +48,9 @@ export class EmpleadoController {
     })
     empleado: Omit<Empleado, 'Id'>,
   ): Promise<Empleado> {    
-    this.mensajeriaService.EnviarSMS(empleado);
-    return this.empleadoRepository.create(empleado);
+      let _empleado = this.empleadoRepository.create(empleado)
+      this.mensajeriaService.EnviarSMS(await _empleado);
+    return _empleado;
   }
 
   @get('/empleados/count')
