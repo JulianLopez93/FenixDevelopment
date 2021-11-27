@@ -2,7 +2,6 @@ import { /* inject, */ BindingScope, injectable} from '@loopback/core';
 import {Empleado} from '../models/empleado.model';
 import {MensajeEmpleado} from '../models/mensaje-empleado.model';
 import {EmpleadoRepository} from '../repositories/empleado.repository';
-import { Guid } from "guid-typescript";
 
 import {
   repository,
@@ -30,9 +29,7 @@ export class MensajeriaService {
     console.log(empleado.Id);
     console.log("conexión con Twilio exitosa.");
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    //set TWILIO_ACCOUNT_SID=ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     let authToken = process.env.TWILIO_AUTH_TOKEN;
-    //set TWILIO_AUTH_TOKEN=your_auth_token
     if (authToken != undefined){
       authToken = authToken.replace(/"/g,'');
     }
