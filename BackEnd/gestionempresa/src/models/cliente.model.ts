@@ -40,6 +40,12 @@ export class Cliente extends Entity {
   })
   Email: string;
 
+  @property({
+    type: 'string',
+    required: true,
+  })
+  Clave: string;
+
   @hasMany(() => Empresa)
   empresas: Empresa[];
 
