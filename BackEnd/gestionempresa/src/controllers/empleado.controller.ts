@@ -17,10 +17,13 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
-import {Empleado} from '../models';
+import {Credenciales, Empleado} from '../models';
 import {EmpleadoRepository} from '../repositories';
+import { AutenticationService } from '../services';
 import {MensajeriaService} from '../services/mensajeria.service';
+import { Llaves } from '../config/llaves';
 
 export class EmpleadoController {
   constructor(
@@ -28,7 +31,41 @@ export class EmpleadoController {
     public empleadoRepository : EmpleadoRepository,
     @service(MensajeriaService)
     public mensajeriaService : MensajeriaService,
+    @service(AutenticationService)
+    public autenticationService: AutenticationService
   ) {}
+
+  @post("/identificarEmpleado", {
+    responses:{
+      '200':{
+        description: "Identificacion de empleados"
+      }
+    }
+  })
+  async identificarEmpleado(
+    @requestBody() credenciales: Credenciales
+  ){
+    let p = await this.autenticationService.IdentificarPersona(credenciales.usuario, credenciales.clave);
+
+    if (p)
+    {
+      let token = this.autenticationService.GenerarTokenJWT(p);
+
+      return{
+        datos:{
+          nombre: p.Nombres,
+          correo: p.Email,
+          id: p.Id
+        },
+        tk: token
+      }
+
+    }
+    else
+    {
+      throw new HttpErrors[401]("Datos invalidos")
+    }
+  }
 
   @post('/empleados')
   @response(200, {
@@ -48,9 +85,17 @@ export class EmpleadoController {
     })
     empleado: Omit<Empleado, 'Id'>,
   ): Promise<Empleado> {    
-      let _empleado = this.empleadoRepository.create(empleado)
-      this.mensajeriaService.EnviarSMS(await _empleado);
-    return _empleado;
+    
+
+    let clave = this.autenticationService.GenerarClave();
+    let claveCifrada = this.autenticationService.CifrarClave(clave);
+    empleado.Clave = claveCifrada;
+
+    let p = await this.empleadoRepository.create(empleado);
+
+    //Notificar al usuario
+    this.mensajeriaService.EnviarSMS(empleado);
+    return p;
   }
 
   @get('/empleados/count')

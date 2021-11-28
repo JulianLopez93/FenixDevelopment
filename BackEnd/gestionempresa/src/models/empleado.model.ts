@@ -70,6 +70,11 @@ export class Empleado extends Entity {
 
   @hasMany(() => MensajeEmpleado)
   mensajeEmpleados: MensajeEmpleado[];
+  @property({
+    type: 'string',
+    required: true,
+  })
+  Clave: string;
 
   constructor(data?: Partial<Empleado>) {
     super(data);
