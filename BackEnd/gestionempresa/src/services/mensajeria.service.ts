@@ -41,7 +41,7 @@ export class MensajeriaService {
     client.messages
       .create({
         body: `Se ha registrado a ${empleado.Nombres} ${empleado.Apellidos}  como un nuevo empleado.`,
-        from: '+18039024115',
+        from: '+19282122695',
         to: '+57' + `${empleado.Telefono}`
       })
       .then((message: any) =>{

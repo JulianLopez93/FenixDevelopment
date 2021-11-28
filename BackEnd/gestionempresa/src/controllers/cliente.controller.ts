@@ -21,7 +21,7 @@ import {
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
 import { AutenticacionService } from '../services';
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
 
 export class ClienteController {
   constructor(
@@ -56,7 +56,9 @@ export class ClienteController {
     let c = await this.clienteRepository.create(cliente);
 
     // Notificar al cliente
-    fetch()
+    //fetch()
+
+    return c;
   }
 
   @get('/clientes/count')
