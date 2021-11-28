@@ -20,15 +20,15 @@ import {
 } from '@loopback/rest';
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
-import { AutenticacionService } from '../services';
+import { AutenticationService } from '../services';
 //const fetch = require('node-fetch');
 
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
-    @service(AutenticacionService)
-    public servicioAutenticacion: AutenticacionService
+    @service(AutenticationService)
+    public servicioAutenticacion: AutenticationService
   ) {}
 
   @post('/clientes')
