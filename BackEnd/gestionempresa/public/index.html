@@ -3,8 +3,8 @@
 
 <head>
   <title>Proyecto Ciclo 4 Grupo Fenix Development</title>
-
   <meta charset="utf-8">
+  <meta name="google" content="notranslate">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="https://loopback.io/favicon.ico">
@@ -20,7 +20,7 @@
     }
 
     h3 a {
-      margin-left: 10px;
+      margin-left: 100px;
     }
 
     a:hover, a:focus, a:active {
@@ -36,14 +36,20 @@
 
     .info {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%)
     }
 
     .info h1 {
+      background: linear-gradient(90deg, rgba(00, 25, 86, 0.9) 15%, rgb(42, 42, 228) 40%, rgba(0,212,255,1)
+       100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-align: center;
       margin-bottom: 0;
+      font-size: 70px;
+      padding: 5px;   
     }
 
     .info p {
@@ -52,6 +58,22 @@
       margin-top: 1em;
     }
 
+    select {
+      display: inline-block;
+      width: auto;
+    }
+
+    hr {
+        height: 1px;
+        background-color: black;
+      }
+    .info p {
+      margin-bottom: 15px;
+    } 
+    
+    .clH3 {
+      letter-spacing: 15px;
+    }
     @media (prefers-color-scheme: dark) {
       body {
         background-color: rgb(29, 30, 32);
@@ -64,16 +86,25 @@
 
       a:hover, a:focus, a:active {
         color: #2b78ff;
-      }
+      } 
     }
   </style>
 </head>
 
 <body>
+  
   <div class="info">
-    <h1>gestionempresa</h1>
-    <p>Version 1.0.0</p>
-
+    <i class="fab fa-themeisle"></i>
+    <h1>Gestión Empresas</h1>
+    <hr>
+    <!--<p>Version 1.0.0</p>-->
+    <h3 class="clH3">CONTROLADORES</h3>
+    <hr>
+    <b>CLIENTES: </b> <select name="forma" onchange="location = this.value;">
+      <option value="http://localhost:3000/explorer/#/ClienteController/ClienteController.create">Post Customers</option>
+      <option value="http://localhost:3000/explorer/#/ClienteController/ClienteController.find">Get Customers</option>
+      <option value="http://localhost:3000/explorer/#/ClienteController/ClienteController.replaceById">Put Customers</option>
+     </select>
     <h3>OpenAPI spec: <a href="./openapi.json">/openapi.json</a></h3>
     <h3>API Explorer: <a href="./explorer">/explorer</a></h3>
   </div>
@@ -83,6 +114,6 @@
       <img src="https://loopback.io/images/branding/powered-by-loopback/blue/powered-by-loopback-sm.png" />
     </a>
   </footer>
-</body>
+</body> 
 
 </html>
