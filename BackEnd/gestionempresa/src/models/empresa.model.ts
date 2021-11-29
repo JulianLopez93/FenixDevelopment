@@ -26,11 +26,10 @@ export class Empresa extends Entity {
   @hasOne(() => Empleado)
   empleado: Empleado;
 
- /* @property({
+  @property({
     type: 'string',
   })
-  clienteId?: string;*/
-
+  clienteId?: string;
   @hasMany(() => Cliente)
   clientes: Cliente[];
 

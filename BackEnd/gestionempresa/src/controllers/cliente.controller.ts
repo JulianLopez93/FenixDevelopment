@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication';
 import { service } from '@loopback/core';
 import {
   Count,
@@ -23,6 +24,7 @@ import {ClienteRepository} from '../repositories';
 import { AutenticationService } from '../services';
 //const fetch = require('node-fetch');
 
+
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
@@ -31,6 +33,7 @@ export class ClienteController {
     public servicioAutenticacion: AutenticationService
   ) {}
 
+  @authenticate('admin')
   @post('/clientes')
   @response(200, {
     description: 'Cliente model instance',
@@ -61,6 +64,7 @@ export class ClienteController {
     return c;
   }
 
+  @authenticate('admin')
   @get('/clientes/count')
   @response(200, {
     description: 'Cliente model count',
@@ -72,6 +76,7 @@ export class ClienteController {
     return this.clienteRepository.count(where);
   }
 
+  @authenticate('admin')
   @get('/clientes')
   @response(200, {
     description: 'Array of Cliente model instances',
@@ -90,6 +95,7 @@ export class ClienteController {
     return this.clienteRepository.find(filter);
   }
 
+  @authenticate('admin')
   @patch('/clientes')
   @response(200, {
     description: 'Cliente PATCH success count',
@@ -109,6 +115,7 @@ export class ClienteController {
     return this.clienteRepository.updateAll(cliente, where);
   }
 
+  @authenticate('admin')
   @get('/clientes/{id}')
   @response(200, {
     description: 'Cliente model instance',
@@ -125,6 +132,7 @@ export class ClienteController {
     return this.clienteRepository.findById(id, filter);
   }
 
+  @authenticate('admin')
   @patch('/clientes/{id}')
   @response(204, {
     description: 'Cliente PATCH success',
@@ -143,6 +151,7 @@ export class ClienteController {
     await this.clienteRepository.updateById(id, cliente);
   }
 
+  @authenticate('admin')
   @put('/clientes/{id}')
   @response(204, {
     description: 'Cliente PUT success',
@@ -154,6 +163,7 @@ export class ClienteController {
     await this.clienteRepository.replaceById(id, cliente);
   }
 
+  @authenticate('admin')
   @del('/clientes/{id}')
   @response(204, {
     description: 'Cliente DELETE success',
