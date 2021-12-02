@@ -1,3 +1,5 @@
+import { authenticate } from '@loopback/authentication';
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -19,13 +21,19 @@ import {
 } from '@loopback/rest';
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
+import { AutenticationService } from '../services';
+//const fetch = require('node-fetch');
 
-export class ClienteControllerController {
+
+export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
+    @service(AutenticationService)
+    public servicioAutenticacion: AutenticationService
   ) {}
 
+  @authenticate('admin')
   @post('/clientes')
   @response(200, {
     description: 'Cliente model instance',
@@ -44,9 +52,19 @@ export class ClienteControllerController {
     })
     cliente: Omit<Cliente, 'Id'>,
   ): Promise<Cliente> {
-    return this.clienteRepository.create(cliente);
+    
+    let clave = this.servicioAutenticacion.GenerarClave();
+    let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
+    cliente.Clave = claveCifrada;
+    let c = await this.clienteRepository.create(cliente);
+
+    // Notificar al cliente
+    //fetch()
+
+    return c;
   }
 
+  @authenticate('admin')
   @get('/clientes/count')
   @response(200, {
     description: 'Cliente model count',
@@ -58,6 +76,7 @@ export class ClienteControllerController {
     return this.clienteRepository.count(where);
   }
 
+  @authenticate('admin')
   @get('/clientes')
   @response(200, {
     description: 'Array of Cliente model instances',
@@ -76,6 +95,7 @@ export class ClienteControllerController {
     return this.clienteRepository.find(filter);
   }
 
+  @authenticate('admin')
   @patch('/clientes')
   @response(200, {
     description: 'Cliente PATCH success count',
@@ -95,6 +115,7 @@ export class ClienteControllerController {
     return this.clienteRepository.updateAll(cliente, where);
   }
 
+  @authenticate('admin')
   @get('/clientes/{id}')
   @response(200, {
     description: 'Cliente model instance',
@@ -111,6 +132,7 @@ export class ClienteControllerController {
     return this.clienteRepository.findById(id, filter);
   }
 
+  @authenticate('admin')
   @patch('/clientes/{id}')
   @response(204, {
     description: 'Cliente PATCH success',
@@ -129,6 +151,7 @@ export class ClienteControllerController {
     await this.clienteRepository.updateById(id, cliente);
   }
 
+  @authenticate('admin')
   @put('/clientes/{id}')
   @response(204, {
     description: 'Cliente PUT success',
@@ -140,6 +163,7 @@ export class ClienteControllerController {
     await this.clienteRepository.replaceById(id, cliente);
   }
 
+  @authenticate('admin')
   @del('/clientes/{id}')
   @response(204, {
     description: 'Cliente DELETE success',
