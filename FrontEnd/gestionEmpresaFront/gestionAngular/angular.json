@@ -30,7 +30,9 @@
               "src/styles.css",
               "node_modules/materialize-css/dist/css/materialize.min.css"
             ],
-            "scripts": ["node_modules/materialize-css/dist/js/materialize.min.js"]
+            "scripts": [
+              "node_modules/materialize-css/dist/js/materialize.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -103,5 +105,8 @@
       }
     }
   },
-  "defaultProject": "gestionAngular"
+  "defaultProject": "gestionAngular",
+  "cli": {
+    "analytics": "e8e7e845-4b47-4c51-a9ef-c15439d8c6ac"
+  }
 }

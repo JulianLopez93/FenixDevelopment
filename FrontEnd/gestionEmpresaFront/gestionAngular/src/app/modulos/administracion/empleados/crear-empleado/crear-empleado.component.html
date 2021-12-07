@@ -1,62 +1,93 @@
-<div class="row">
-    <form [formGroup]="fgValidador" (ngSubmit)="GuardarEmpleado()" method="POST" action="#" class="col s12">
-        <div class="row">
-            <div class="input-field col s6">
-                <input formcontrolname="nombres" type="text" name="nombres" required>
-                <label for="nombres">Nombres</label>
-            </div>
-            <div class="input-field col s6">
-                <input formcontrolname="apellidos" type="text" name="apellidos" required>
-                <label for="apellidos">Apellidos</label>
-            </div>
+<br />
+<br />
+<div container>
+  <div class="row">
+    <form
+      [formGroup]="fgValidador"
+      (ngSubmit)="GuardarEmpleado()"
+      method="POST"
+      action="#"
+      class="col s12"
+    >
+      <div class="row">
+        <div class="input-field col s6">
+          <input
+            formcontrolname="nombres",
+            type="text",
+            name="nombres",
+            required
+          />
+          <label for="nombres">Nombres</label>
         </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input formcontrolname="telefono" type="text" name="telefono" required>
-                <label for="telefono">Telefono</label>
-            </div>
-            <div class="input-field col s6">
-                <input formcontrolname="correo" type="email" name="correo" required>
-                <label for="correo">Correo</label>
-            </div>
+        <div class="input-field col s6">
+          <input
+            formcontrolname="apellidos"
+            type="text"
+            name="apellidos"
+            required
+          />
+          <label for="apellidos">Apellidos</label>
         </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input formcontrolname="fechaNacimiento" type="datetime" name="fechaNacimiento" required>
-                <label for="fechaNacimiento">Fecha de nacimiento</label>
-
-            </div>
-
-
-            <div class="input-field col s3">
-                <input formcontrolname="salario" type="number" name="salario" required>
-                <label for="salario">Salario</label>
-
-            </div>
-            <div class="input-field col s3">
-                <p>
-                    <label>
-                        <input formcontrolname="esDirectivo" type="checkbox" name="esDirectivo"/>
-                        <span>Es Directivo</span>
-                    </label>
-                </p>
-            </div>
-
-
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input
+            formcontrolname="telefono"
+            type="text"
+            name="telefono"
+            required
+          />
+          <label for="telefono">Telefono</label>
         </div>
-        <div class="row">
-
-            <div class="input-field col s2">
-                <input formcontrolname="edad" type="number" name="edad" required>
-                <label for="salario">Edad</label>
-
-            </div>
-
-
-            <button class="btn waves-effect waves-light" type="submit" name="action">ENVIAR
-                <i class="material-icons right">send</i>
-            </button>
-
+        <div class="input-field col s4">
+          <input formcontrolname="correo" type="email" name="correo" required />
+          <label for="correo">Correo</label>
         </div>
+        <div class="input-field col s4">
+          <input formcontrolname="edad" type="number" name="edad" required />
+          <label for="salario">Edad</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <input
+            formcontrolname="fechaNacimiento"
+            type="date"
+            name="fechaNacimiento"
+          />
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+        </div>
+        <div class="input-field col s4">
+          <input
+            formcontrolname="salario"
+            type="number"
+            name="salario"
+          />
+          <label for="salario">Salario</label>
+        </div>
+        <div class="input-field col s4">
+          <p>
+            <label>
+              <input
+                formcontrolname="esDirectivo"
+                type="checkbox"
+                name="esDirectivo"
+              />
+              <span>Es Directivo</span>
+            </label>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <button
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          ENVIAR
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
     </form>
+  </div>
 </div>
