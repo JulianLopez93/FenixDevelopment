@@ -1,0 +1,14 @@
+body {
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+.login-form {
+    background-color:rgb(245, 245, 248);
+}
+
+h4{
+    text-align: center;
+    font-weight: 500;
+    font-size: 150%;
+}

@@ -56,14 +56,15 @@ export class ClienteController {
     cliente: Omit<Cliente, 'Id'>,
   ): Promise<Cliente> {
     
-    let clave = this.servicioAutenticacion.GenerarClave();
-    let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
-    cliente.Clave = claveCifrada;
-    let c = await this.clienteRepository.create(cliente);
+    // let clave = this.servicioAutenticacion.GenerarClave();
+    // let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
+    // cliente.Clave = claveCifrada;
+    // let c = await this.clienteRepository.create(cliente);
 
-    // Notificar al cliente
-    this.mensajeriaService.EnviarSMS(cliente)
-    return c;
+    // // Notificar al cliente
+    // this.mensajeriaService.EnviarSMS(cliente)
+    // return c;
+    return this.clienteRepository.create(cliente);
   }
 
   @authenticate('admin')

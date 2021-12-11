@@ -40,6 +40,7 @@ export class AutenticationService {
 
       if (p)
       {
+        console.log(`user: ${usuario} the password is: ${clave} `)
         return p;
       }
 

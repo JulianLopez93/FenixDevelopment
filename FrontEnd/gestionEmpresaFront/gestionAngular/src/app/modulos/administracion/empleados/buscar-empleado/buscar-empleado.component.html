@@ -1,1 +1,87 @@
-<p>buscar-empleado works!</p>
+<link rel="stylesheet" href="buscar-empleado.component.css">
+<br>
+<hr>
+<a routerLink="/administracion/crear-empleado" class="btn">Registrar Empleado</a>
+<hr>
+<table class="table responsive">
+    <thead>
+        <tr>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Teléfono
+            </th>
+            <!-- <th>
+                Dirección
+            </th> -->
+            <th>
+                Email
+            </th>
+            <th>
+                Edad
+            </th>
+            <!-- <th>
+                FechaNacimiento
+            </th> -->
+            <th>
+                Salario
+            </th>
+            <th>
+                EsDirectivo
+            </th>
+            <th>
+                empresaId
+            </th>
+            <!-- <th>
+                Editar
+            </th>
+            <th>
+                Eliminar
+            </th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of listadoRegistros">
+            <td>
+                {{p.Nombres}}
+            </td>
+            <td>
+                {{p.Apellidos}}
+            </td>
+            <td>
+                {{p.Telefono}}
+            </td>
+            <!-- <td>
+                {{p.Direccion}}
+            </td> -->
+            <td>
+                {{p.Email}}
+            </td>
+            <td>
+                {{p.Edad}}
+            </td>
+            <!-- <td>
+                {{p.FechaNacimiento}}
+            </td> -->
+            <td>
+                {{p.Salario}}
+            </td>
+            <td>
+                {{p.EsDirectivo}}
+            </td>
+            <td>
+                {{p.empresaId}}
+            </td>
+            <td>
+                <a routerLink="/administracion/editar-empleado/{{p.Id}}" class="btn">Editar</a>
+            </td>
+            <td>
+                <a routerLink="/administracion/eliminar-empleado/{{p.Id}}" class="btn">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

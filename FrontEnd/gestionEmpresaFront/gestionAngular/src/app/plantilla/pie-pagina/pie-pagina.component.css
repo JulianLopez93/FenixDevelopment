@@ -1,0 +1,91 @@
+footer {
+    background-color: rgb(123, 123, 204);
+}
+body{
+  background: #222
+}
+
+/*svg twitter*/
+.clsTwiter {
+      width: 30px;
+      height: 30px;
+      padding: 4px;
+      border-radius: 50%;
+      /* box-shadow: 2px 2px 6px rgba(0,0,0,0.4); */
+      display: inline;
+      margin-top: 10px;
+      fill:#fff;
+      background-color: #3BA9EE;
+  }
+
+.clsTwiter:hover {
+  box-shadow: 2px 2px 11px rgba(0,0,0,0.7);
+}
+
+/*svg whatsapp*/
+
+.whatsapp-ico{
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  background-color: #4dc247;
+  border-radius: 50%;
+  /* box-shadow: 2px 2px 6px rgba(0,0,0,0.4); */
+  display: inline;
+  margin-top: 10px;
+  /* box-shadow: 2px 2px 11px rgba(0,0,0,0.7); */
+  /* position: fixed; */
+  /* bottom: 20px;
+  right : 20px; 
+  z-index: 10; */
+}
+
+.whatsapp-ico:hover{
+    box-shadow: 2px 2px 11px rgba(0,0,0,0.7);
+}
+
+/*svg facebook*/
+
+.icons8-Facebook-Filled{
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  background-color: #3b5998;
+  fill: #fff;
+  border-radius: 50%;
+  /* box-shadow: 2px 2px 6px rgba(0,0,0,0.4); */
+  display: inline;
+  margin-top: 10px;
+}
+
+.icons8-Facebook-Filled:hover{
+  box-shadow: 2px 2px 11px rgba(0,0,0,0.7);  
+}
+
+/*telegram*/
+.bi-telegram {
+  fill: #fff;
+  background-color: #0088CC;
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  border-radius: 50%;
+  /* box-shadow: 2px 2px 6px rgba(0,0,0,0.4); */
+  display: inline;
+  margin-top: 10px;
+}
+
+.bi-telegram:hover{
+  box-shadow: 2px 2px 11px rgba(0,0,0,0.7);  
+}
+
+/*others*/
+span{
+  margin-left: 5%;
+  vertical-align: super;
+  font-size: 150%;
+}
+span:hover {
+  text-shadow: 0.5px 0.5px 5px #fff;
+}
