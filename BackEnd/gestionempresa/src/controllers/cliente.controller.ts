@@ -22,6 +22,7 @@ import {
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
 import { AutenticationService } from '../services';
+import {MensajeriaService} from '../services/mensajeria.service';
 //const fetch = require('node-fetch');
 
 
@@ -29,6 +30,8 @@ export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
+    @service(MensajeriaService)
+    public mensajeriaService : MensajeriaService,
     @service(AutenticationService)
     public servicioAutenticacion: AutenticationService
   ) {}
@@ -59,8 +62,7 @@ export class ClienteController {
     let c = await this.clienteRepository.create(cliente);
 
     // Notificar al cliente
-    //fetch()
-
+    this.mensajeriaService.EnviarSMS(cliente)
     return c;
   }
 

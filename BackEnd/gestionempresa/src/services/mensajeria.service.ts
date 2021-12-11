@@ -24,8 +24,8 @@ export class MensajeriaService {
   /*
    * Add service methods here
    */
-
-  EnviarSMS(empleado: Empleado): void {
+  //Se cambio parametro de type Empleado a any para pruebas con modelo cliente.
+  EnviarSMS(empleado: any): void {
     console.log(empleado.Id);
     console.log("conexión con Twilio exitosa.");
     const accountSid = process.env.TWILIO_ACCOUNT_SID;

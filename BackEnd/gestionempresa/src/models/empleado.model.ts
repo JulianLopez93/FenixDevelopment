@@ -72,7 +72,7 @@ export class Empleado extends Entity {
   mensajeEmpleados: MensajeEmpleado[];
   @property({
     type: 'string',
-    required: true,
+    required: false,
   })
   Clave: string;
 
