@@ -29,6 +29,37 @@ export class CrearEmpleadoComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    
+  }
+
+  GuardarEmpleado()
+  {
+    let nombres = this.fgValidador.controls["nombres"].value;
+    let apellidos = this.fgValidador.controls["apellidos"].value;
+    let telefono = this.fgValidador.controls["telefono"].value;
+    let correo = this.fgValidador.controls["correo"].value;
+    let fechaNacimiento = this.fgValidador.controls["fechaNacimiento"].value;
+    let salario = parseInt(this.fgValidador.controls["salario"].value);
+    //let esDirectivo = parseBooolean(this.fgValidador.controls["esDirectivo"].value);
+
+    let e = new ModeloEmpleado();
+
+    e.Nombres = nombres;
+    e.Apellidos = apellidos;
+    e.Telefono = telefono;
+    e.Email = correo;
+    e.FechaNacimiento = fechaNacimiento;
+    e.Salario = salario;
+    //e.esDirectivo = esDirectivo;
+
+    this.servicioEmpleado.CrearEmpleado(e).subscribe((datos: ModeloEmpleado) => {
+      alert("Empleado almacenado correctamente");
+      this.router.navigate(["/administracion/listar-empleados"])
+
+    }, (error: any) =>{
+      alert("Error al almacenar el empleado");
+    })
+
   }
 
   GuardarEmpleado(){

@@ -31,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditarEmpleadoComponent,
     EliminarEmpleadoComponent,
     BuscarEmpleadoComponent,
+    ListarEmpleadosComponent
 
   ],
   imports: [
