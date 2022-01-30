@@ -38,7 +38,7 @@ export class EmpleadoController {
   @post("/identificarEmpleado", {
     responses:{
       '200':{
-        description: "Identificacion de empleados"
+        description: "Identificación de empleados"
       }
     }
   })
@@ -63,7 +63,7 @@ export class EmpleadoController {
     }
     else
     {
-      throw new HttpErrors[401]("Datos invalidos")
+      throw new HttpErrors[401]("Datos invalidos desde el Backend")
     }
   }
 
@@ -88,7 +88,10 @@ export class EmpleadoController {
     
 
     let clave = this.autenticationService.GenerarClave();
+    console.log(`Clave: ${clave}`)
+    let claveNoCifrada = clave;
     let claveCifrada = this.autenticationService.CifrarClave(clave);
+    empleado.ClaveN = claveNoCifrada;
     empleado.Clave = claveCifrada;
 
     let p = await this.empleadoRepository.create(empleado);
@@ -179,7 +182,7 @@ export class EmpleadoController {
   ): Promise<void> {
     await this.empleadoRepository.updateById(id, empleado);
   }
-
+  
   @put('/empleados/{id}')
   @response(204, {
     description: 'Empleado PUT success',

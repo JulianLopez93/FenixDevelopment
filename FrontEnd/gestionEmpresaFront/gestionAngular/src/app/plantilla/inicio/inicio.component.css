@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital@1&display=swap');
+#imgTwo {
+    width: 100%;
+    height: 460px;
+}
+
+#imgOne {
+    width: 200px;
+    height: 120px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin-left: 77%;
+    margin-top: -15%;
+}
+
+.cls-img {
+    font-family: 'Source Serif Pro', serif;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+}
+
+h3 {
+    display: inline-block;
+    margin-bottom: -10%;
+}
+
+p {
+    font-family: 'Source Serif Pro', serif;
+    text-align: justify;
+}

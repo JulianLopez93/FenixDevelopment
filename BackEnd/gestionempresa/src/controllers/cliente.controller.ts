@@ -22,6 +22,7 @@ import {
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
 import { AutenticationService } from '../services';
+import {MensajeriaService} from '../services/mensajeria.service';
 //const fetch = require('node-fetch');
 
 
@@ -29,6 +30,8 @@ export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
+    @service(MensajeriaService)
+    public mensajeriaService : MensajeriaService,
     @service(AutenticationService)
     public servicioAutenticacion: AutenticationService
   ) {}
@@ -53,15 +56,15 @@ export class ClienteController {
     cliente: Omit<Cliente, 'Id'>,
   ): Promise<Cliente> {
     
-    let clave = this.servicioAutenticacion.GenerarClave();
-    let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
-    cliente.Clave = claveCifrada;
-    let c = await this.clienteRepository.create(cliente);
+    // let clave = this.servicioAutenticacion.GenerarClave();
+    // let claveCifrada = this.servicioAutenticacion.CifrarClave(clave);
+    // cliente.Clave = claveCifrada;
+    // let c = await this.clienteRepository.create(cliente);
 
-    // Notificar al cliente
-    //fetch()
-
-    return c;
+    // // Notificar al cliente
+    // this.mensajeriaService.EnviarSMS(cliente)
+    // return c;
+    return this.clienteRepository.create(cliente);
   }
 
   @authenticate('admin')

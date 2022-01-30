@@ -24,7 +24,7 @@ export class MensajeriaService {
   /*
    * Add service methods here
    */
-
+  //Se cambio parametro de type Empleado a any para pruebas con modelo cliente.
   EnviarSMS(empleado: Empleado): void {
     console.log(empleado.Id);
     console.log("conexión con Twilio exitosa.");
@@ -40,8 +40,8 @@ export class MensajeriaService {
 
     client.messages
       .create({
-        body: `Se ha registrado a ${empleado.Nombres} ${empleado.Apellidos}  como un nuevo empleado.`,
-        from: '+19282122695',
+        body: `Se ha registrado a ${empleado.Nombres} ${empleado.Apellidos}  como un nuevo empleado y su clave es: ${empleado.ClaveN}.`,
+        from: '+18507508309',
         to: '+57' + `${empleado.Telefono}`
       })
       .then((message: any) =>{
@@ -55,7 +55,7 @@ export class MensajeriaService {
         mensajeEmpleado.IdTwilio = message.sid;
         mensajeEmpleado.Destinatario = message.to;
         mensajeEmpleado.Estado = message.status;
-        console.log(_empleado.Id);
+        console.log(empleado.Id);
 
         this.empleadoRepository.mensajeEmpleados(_empleado.Id).create(mensajeEmpleado);
     });

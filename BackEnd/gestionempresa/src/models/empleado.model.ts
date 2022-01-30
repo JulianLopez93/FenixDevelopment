@@ -1,5 +1,5 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
-import {MensajeEmpleado} from './mensaje-empleado.model';
+import { Entity, model, property, hasMany } from '@loopback/repository';
+import { MensajeEmpleado } from './mensaje-empleado.model';
 
 @model()
 export class Empleado extends Entity {
@@ -44,41 +44,60 @@ export class Empleado extends Entity {
     required: true,
   })
   Edad: number;
+@property({
+  type: 'string',
+  required: true,
+})
+FechaNacimiento: string;
 
-  @property({
-    type: 'date',
-    required: true,
-  })
-  FechaNacimiento: string;
+@property({
+  type: 'number',
+  required: true,
+})
+Salario: number;
 
-  @property({
-    type: 'number',
-    required: true,
-  })
-  Salario: number;
+@property({
+  type: 'boolean',
+  required: true,
+})
+EsDirectivo: boolean;
 
-  @property({
-    type: 'boolean',
-    required: true,
-  })
-  EsDirectivo: boolean;
+@property({
+  type: 'string',
+})
+empresaId ?: string;
 
-  @property({
+@hasMany(() => MensajeEmpleado)
+mensajeEmpleados: MensajeEmpleado[];
+@property({
+  type: 'string',
+  required: false,
+})
+Clave: string;
+
+@property({
+  type: 'string',
+  required: false,
+})
+ClaveN: string;
+
+  //@hasMany(() => MensajeEmpleado)
+  //mensajeEmpleados: MensajeEmpleado[];
+  /*@property({
     type: 'string',
-  })
-  empresaId?: string;
-
-  @hasMany(() => MensajeEmpleado)
-  mensajeEmpleados: MensajeEmpleado[];
-  @property({
-    type: 'string',
     required: true,
   })
-  Clave: string;
+  */
+  //Clave: string;
 
+  /*
   constructor(data?: Partial<Empleado>) {
     super(data);
   }
+  */
+constructor(data ?: Partial<Empleado>) {
+  super(data);
+}
 }
 
 export interface EmpleadoRelations {

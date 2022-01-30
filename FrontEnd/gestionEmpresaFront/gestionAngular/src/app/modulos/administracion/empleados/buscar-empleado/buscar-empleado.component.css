@@ -1,0 +1,19 @@
+th {
+    border: 3px solid #fff;
+    font-size: 14px;
+    padding: 3px;
+    color: #fff;
+    background-color: rgb(123, 123, 204);
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    font-size: 100%;
+    color: #000;
+    background-color: rgb(206, 206, 209);
+}
+
+td a {
+    font-size: 70%;
+}

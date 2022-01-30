@@ -1,8 +1,8 @@
-import {injectable, /* inject, */ BindingScope} from '@loopback/core';
+import {injectable, /* inject, */ BindingScope, service} from '@loopback/core';
 import { repository } from '@loopback/repository';
 import { Empleado } from '../models';
 import { Llaves } from '../config/llaves';
-import { EmpleadoRepository } from '../repositories';
+import { ClienteRepository, EmpleadoRepository } from '../repositories';
 const generador = require("password-generator");
 const cryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
@@ -11,7 +11,9 @@ const jwt = require("jsonwebtoken");
 export class AutenticationService {
   constructor(
     @repository(EmpleadoRepository)
-    public empleadoRepository: EmpleadoRepository
+    public empleadoRepository: EmpleadoRepository,
+    @repository(ClienteRepository)
+    public clienteRepository: ClienteRepository
     ) {}
 
   /*
@@ -38,6 +40,7 @@ export class AutenticationService {
 
       if (p)
       {
+        console.log(`user: ${usuario} the password is: ${clave} `)
         return p;
       }
 
